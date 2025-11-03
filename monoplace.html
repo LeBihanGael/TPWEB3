@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,53 +8,96 @@
     <link rel="stylesheet" href="css/styles.css">
     <!-- Import font for title -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- SimpleLightbox plugin CSS (used by the theme) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap) -->
     <style>
         /* Background image with subtle dark overlay for contrast */
         body {
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('assets/img/portfolio/qg.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('assets/img/portfolio/qg.jpg') center/cover no-repeat fixed;
             color: #fff;
-            -webkit-font-smoothing:antialiased;
-            -moz-osx-font-smoothing:grayscale;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        header h1, header p { color: #fff; }
-        header h1 { font-family: 'Montserrat', sans-serif; }
+
+        header h1,
+        header p {
+            color: #fff;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+        }
 
         /* Cards animation and hover (cards stay white) */
         #cars .car-card {
             position: relative;
-            background: #fff; /* keep cards white for readability */
+            background: #fff;
+            /* keep cards white for readability */
             transform: translateY(12px);
             opacity: 0;
             animation: cardIn 0.6s ease forwards;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
+
         #cars .car-card:hover {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
         }
+
         @keyframes cardIn {
-            to { transform: translateY(0); opacity: 1; }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
+
         /* Staggered delays for nicer entrance */
-        #cars .car-card:nth-child(1) { animation-delay: 0s; }
-        #cars .car-card:nth-child(2) { animation-delay: 0.08s; }
-        #cars .car-card:nth-child(3) { animation-delay: 0.16s; }
-        #cars .car-card:nth-child(4) { animation-delay: 0.24s; }
-        #cars .car-card:nth-child(5) { animation-delay: 0.32s; }
-        #cars .car-card:nth-child(6) { animation-delay: 0.40s; }
-        #cars .car-card:nth-child(7) { animation-delay: 0.48s; }
-        #cars .car-card:nth-child(8) { animation-delay: 0.56s; }
+        #cars .car-card:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        #cars .car-card:nth-child(2) {
+            animation-delay: 0.08s;
+        }
+
+        #cars .car-card:nth-child(3) {
+            animation-delay: 0.16s;
+        }
+
+        #cars .car-card:nth-child(4) {
+            animation-delay: 0.24s;
+        }
+
+        #cars .car-card:nth-child(5) {
+            animation-delay: 0.32s;
+        }
+
+        #cars .car-card:nth-child(6) {
+            animation-delay: 0.40s;
+        }
+
+        #cars .car-card:nth-child(7) {
+            animation-delay: 0.48s;
+        }
+
+        #cars .car-card:nth-child(8) {
+            animation-delay: 0.56s;
+        }
 
         /* Hover overlay (pseudo-elements) */
         #cars .car-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
             opacity: 0;
             transition: opacity 0.25s ease, transform 0.25s ease;
             z-index: 2;
         }
+
         /* remove visible label during hover by clearing ::after and only showing overlay (::before) */
         #cars .car-card::after {
             content: '';
@@ -63,30 +107,63 @@
             opacity: 0;
             z-index: 3;
         }
+
         /* only show the dark overlay on hover (no label) */
         #cars .car-card:hover::before {
             opacity: 1;
         }
 
         /* Ensure cards text looks good */
-        #cars .car-card h2 { color: #111; }
-        #cars .car-card p, #cars .car-card li { color: #333; }
+        #cars .car-card h2 {
+            color: #111;
+        }
+
+        #cars .car-card p,
+        #cars .car-card li {
+            color: #333;
+        }
     </style>
 </head>
+
 <body>
-    <header style="padding:4rem 1rem; text-align:center; background: linear-gradient(180deg, rgba(244,98,58,0.12), rgba(0,0,0,0));">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">Ferrari F1 Team</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="histoire.html">Histoire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="palmares.html">Palmares</a></li>
+                    <li class="nav-item"><a class="nav-link" href="classement.html">Classement</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pilotes.html">Pilotes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="monoplace.html">Monoplace</a></li>
+                    <li class="nav-item"><a class="nav-link" href="CVFR.html">CV FR</a></li>
+                    <li class="nav-item"><a class="nav-link" href="CVEN.html">CV EN</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header
+        style="padding:4rem 1rem; text-align:center; background: linear-gradient(180deg, rgba(244,98,58,0.12), rgba(0,0,0,0));">
         <h1 style="margin:0; font-size:2.25rem;">Les monoplaces Ferrari</h1>
-        <p style="margin-top:0.5rem; color:#ffffff;">Présentation de quelques monoplaces emblématiques de la Scuderia Ferrari</p>
+        <p style="margin-top:0.5rem; color:#ffffff;">Présentation de quelques monoplaces emblématiques de la Scuderia
+            Ferrari</p>
     </header>
 
     <main style="padding:2rem 1rem; max-width:1200px; margin:0 auto;">
-    <section id="cars" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem;">
+        <section id="cars"
+            style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1.25rem;">
             <!-- Card 1 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
-                <img src="assets/img/portfolio/2004.jpg" alt="Ferrari F2004" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
+                <img src="assets/img/portfolio/2004.jpg" alt="Ferrari F2004"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari F2004</h2>
-                    <p style="margin:0 0 .5rem 0; color:#555;">La F2004 est l'une des monoplaces les plus dominantes de l'histoire de la F1, pilotée par Michael Schumacher.</p>
+                    <p style="margin:0 0 .5rem 0; color:#555;">La F2004 est l'une des monoplaces les plus dominantes de
+                        l'histoire de la F1, pilotée par Michael Schumacher.</p>
                     <ul style="margin:0; padding-left:1rem; color:#444; font-size:0.95rem;">
                         <li>Moteur: V10</li>
                         <li>Année: 2004</li>
@@ -94,10 +171,12 @@
                     </ul>
                 </div>
             </article>
-            
+
             <!-- Card 5 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-                <img src="assets/img/portfolio/2010.jpg" alt="Ferrari F1 - 5" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+                <img src="assets/img/portfolio/2010.jpg" alt="Ferrari F1 - 5"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari F10</h2>
                     <p style="margin:0 0 .5rem 0; color:#555;">Voiture de 2010 qui finira 3eme avec 396 points</p>
@@ -110,11 +189,14 @@
             </article>
 
             <!-- Card 6 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-                <img src="assets/img/portfolio/2006.jpg" alt="Ferrari F1 - 6" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+                <img src="assets/img/portfolio/2006.jpg" alt="Ferrari F1 - 6"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari F248</h2>
-                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture qui a roulee durant la saison 2006, finissant 2eme avec 201 points</p>
+                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture qui a roulee durant la saison 2006, finissant
+                        2eme avec 201 points</p>
                     <ul style="margin:0; padding-left:1rem; color:#444; font-size:0.95rem;">
                         <li>Moteur: V10</li>
                         <li>Année: 2006</li>
@@ -124,11 +206,14 @@
             </article>
 
             <!-- Card 7 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-                <img src="assets/img/portfolio/2022.jpg" alt="Ferrari F1 - 7" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+                <img src="assets/img/portfolio/2022.jpg" alt="Ferrari F1 - 7"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari F1-75</h2>
-                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture engagee pour la saison 2022, elle finira 2eme avec 554 points</p>
+                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture engagee pour la saison 2022, elle finira 2eme
+                        avec 554 points</p>
                     <ul style="margin:0; padding-left:1rem; color:#444; font-size:0.95rem;">
                         <li>Moteur: V6</li>
                         <li>Année: 2022</li>
@@ -138,11 +223,14 @@
             </article>
 
             <!-- Card 8 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
-                <img src="assets/img/portfolio/20188.jpg" alt="Ferrari F1 - 8" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08);">
+                <img src="assets/img/portfolio/20188.jpg" alt="Ferrari F1 - 8"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari SF71H</h2>
-                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture qui a roule pour la saison 2018, elle finit en 2eme avec 571 points</p>
+                    <p style="margin:0 0 .5rem 0; color:#555;">Voiture qui a roule pour la saison 2018, elle finit en
+                        2eme avec 571 points</p>
                     <ul style="margin:0; padding-left:1rem; color:#444; font-size:0.95rem;">
                         <li>Moteur: V6 Turbo</li>
                         <li>Année: 2018</li>
@@ -152,8 +240,10 @@
             </article>
 
             <!-- Card 2 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
-                <img src="assets/img/portfolio/2019.jpg" alt="Ferrari SF90" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
+                <img src="assets/img/portfolio/2019.jpg" alt="Ferrari SF90"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari SF90</h2>
                     <p style="margin:0 0 .5rem 0; color:#555;">Voiture de 2019, terminant 2eme avec 504 points</p>
@@ -166,11 +256,14 @@
             </article>
 
             <!-- Card 3 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
-                <img src="assets/img/portfolio/1990.jpg" alt="Ferrari 641" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
+                <img src="assets/img/portfolio/1990.jpg" alt="Ferrari 641"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari 641</h2>
-                    <p style="margin:0 0 .5rem 0; color:#555;">La 641 pilotée par Alain Prost et Nigel Mansell, terminant a la 2eme place avec 110 points</p>
+                    <p style="margin:0 0 .5rem 0; color:#555;">La 641 pilotée par Alain Prost et Nigel Mansell,
+                        terminant a la 2eme place avec 110 points</p>
                     <ul style="margin:0; padding-left:1rem; color:#444; font-size:0.95rem;">
                         <li>Moteur: V12</li>
                         <li>Année: 1990</li>
@@ -180,8 +273,10 @@
             </article>
 
             <!-- Card 4 -->
-            <article class="car-card" style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
-                <img src="assets/img/portfolio/1975.jpg" alt="Ferrari 312T" style="width:100%; height:180px; object-fit:cover; display:block;">
+            <article class="car-card"
+                style="border-radius:8px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); background:#fff;">
+                <img src="assets/img/portfolio/1975.jpg" alt="Ferrari 312T"
+                    style="width:100%; height:180px; object-fit:cover; display:block;">
                 <div style="padding:1rem;">
                     <h2 style="margin:0 0 .25rem 0; font-size:1.25rem;">Ferrari 312T</h2>
                     <p style="margin:0 0 .5rem 0; color:#555;">Voiture championne du monde avec 72,5 points</p>
@@ -195,6 +290,13 @@
             </article>
         </section>
     </main>
-    
+    <!-- Bootstrap core JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SimpleLightbox plugin JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Core theme JS -->
+    <script src="js/scripts.js"></script>
+
 </body>
+
 </html>
