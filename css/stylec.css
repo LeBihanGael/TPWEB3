@@ -1,0 +1,83 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../assets/img/c5.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contact-form {
+    
+    padding: 30px;
+    border-radius: 8px;
+    
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    box-shadow: 3px 9px 11px 0px rgba(255, 255, 255, 0.686) inset,
+        -11px -7px 12px rgba(255, 255, 255, 0.384);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.contact-form button {
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contact-form button:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+#sexe {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+    font-size: 16px;
+    color: #ffffff;
+    appearance: none;
+    /* enlève le style natif du navigateur */
+}
+option {
+    background-color: #ffffff;
+    color: #000000;
+}

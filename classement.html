@@ -12,145 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap) -->
     <link href="css/styles.css" rel="stylesheet" />
-    <style>
-        :root {
-            --primary-color: #e10600;
-            --secondary-color: #ffffff;
-            --text-light: #ffffff;
-            --text-dark: #ffffff;
-            --accent-color: #000000;
-            --grid-bg: rgb(0, 0, 0);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            background-color: #00000049;
-        }
-
-        .hero {
-            background-color: rgba(255, 255, 255, 0.2);
-            height: 40vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        .standings-container {
-            max-width: 1200px;
-            margin: -50px auto 0;
-            padding: 0 20px;
-        }
-
-        .standings-nav {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .standings-nav button {
-            background: var(--accent-color);
-            color: var(--text-light);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .standings-nav button.active {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .standings-grid {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            background-color: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            box-shadow: 3px 9px 11px 0px rgba(255, 255, 255, 0.686) inset,
-                -11px -7px 12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .standings-header {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            display: grid;
-            grid-template-columns: 70px 50px 2fr 1fr 1fr;
-            gap: 10px;
-            font-weight: 500;
-        }
-
-        .standings-row {
-            padding: 15px;
-            display: grid;
-            grid-template-columns: 70px 50px 2fr 1fr 1fr;
-            gap: 10px;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: background-color 0.3s;
-            color: #000000;
-        }
-
-        .standings-row:hover {
-            background: rgba(94, 91, 91, 0.822);
-        }
-
-        .position {
-            font-weight: bold;
-            color: rgb(0, 0, 0);
-        }
-
-        .driver-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .driver-info img {
-            width: 30px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-        }
-
-        .points {
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .standings-header, .standings-row {
-                grid-template-columns: 50px 2fr 1fr;
-            }
-
-            .standings-header > :nth-child(2),
-            .standings-row > :nth-child(2),
-            .standings-header > :nth-child(5),
-            .standings-row > :nth-child(5) {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styleclass.css">
 </head>
 
 <body>
@@ -165,6 +27,7 @@
                         <li class="nav-item"><a class="nav-link" href="classement.html">Classement</a></li>
                         <li class="nav-item"><a class="nav-link" href="pilotes.html">Pilotes</a></li>
                         <li class="nav-item"><a class="nav-link" href="monoplace.html">Monoplace</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="CVFR.html">CV FR</a></li>
                         <li class="nav-item"><a class="nav-link" href="CVEN.html">CV EN</a></li>
                     </ul>
@@ -504,46 +367,6 @@
             </div>
         </div>
     </main>
-
-    <script>
-        function showStandings(type) {
-            const driversStandings = document.getElementById('drivers-standings');
-            const constructorsStandings = document.getElementById('constructors-standings');
-            const buttons = document.querySelectorAll('.standings-nav button');
-            
-            if (type === 'drivers') {
-                driversStandings.style.display = 'block';
-                constructorsStandings.style.display = 'none';
-                buttons[0].classList.add('active');
-                buttons[1].classList.remove('active');
-            } else {
-                driversStandings.style.display = 'none';
-                constructorsStandings.style.display = 'block';
-                buttons[0].classList.remove('active');
-                buttons[1].classList.add('active');
-            }
-        }
-
-        // Animation des lignes au scroll
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        document.querySelectorAll('.standings-row').forEach(row => {
-            row.style.opacity = 0;
-            row.style.transform = 'translateY(20px)';
-            row.style.transition = 'all 0.3s ease-out';
-            observer.observe(row);
-        });
-    </script>
     <!-- Bootstrap core JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SimpleLightbox plugin JS -->

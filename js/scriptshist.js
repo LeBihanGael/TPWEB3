@@ -1,12 +1,3 @@
-/*!
-* Start Bootstrap - Creative v7.0.7 (https://startbootstrap.com/theme/creative)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-creative/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
-
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
@@ -57,43 +48,14 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+// Animation de révélation au scroll
+const milestones = document.querySelectorAll('.milestone');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
 
-
-function showStandings(type) {
-    const driversStandings = document.getElementById('drivers-standings');
-    const constructorsStandings = document.getElementById('constructors-standings');
-    const buttons = document.querySelectorAll('.standings-nav button');
-
-    if (type === 'drivers') {
-        driversStandings.style.display = 'block';
-        constructorsStandings.style.display = 'none';
-        buttons[0].classList.add('active');
-        buttons[1].classList.remove('active');
-    } else {
-        driversStandings.style.display = 'none';
-        constructorsStandings.style.display = 'block';
-        buttons[0].classList.remove('active');
-        buttons[1].classList.add('active');
-    }
-}
-
-// Animation des lignes au scroll
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = 1;
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    },
-    { threshold: 0.1 }
-);
-
-document.querySelectorAll('.standings-row').forEach(row => {
-    row.style.opacity = 0;
-    row.style.transform = 'translateY(20px)';
-    row.style.transition = 'all 0.3s ease-out';
-    observer.observe(row);
-});
-
+milestones.forEach(milestone => observer.observe(milestone));

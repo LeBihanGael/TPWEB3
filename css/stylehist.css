@@ -1,0 +1,416 @@
+:root {
+    --ferrari-red: #c40000;
+    --ferrari-red-light: #ff1a1a;
+    --ferrari-red-dark: #8b0000;
+    --bg-dark: #0a0a0a;
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.8);
+    --timeline-width: 6px;
+    --milestone-size: 120px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('../assets/img/hist2.jpg') center/cover fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: var(--ferrari-red);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 15px;
+}
+
+.scroll-indicator::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+}
+
+.timeline-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg,
+            var(--bg-dark) 0%,
+            var(--ferrari-red-dark) 35%,
+            var(--ferrari-red) 65%,
+            var(--bg-dark) 100%);
+    color: var(--text-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: var(--timeline-width);
+    background: var(--ferrari-red);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    /* Place la ligne derrière les images */
+}
+
+.milestone {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+}
+
+.milestone.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.milestone.left {
+    left: 0;
+}
+
+.milestone.right {
+    left: 50%;
+}
+
+.milestone-dot {
+    position: absolute;
+    width: var(--milestone-size);
+    height: var(--milestone-size);
+    right: -60px;
+    background: var(--bg-dark);
+    border: 4px solid var(--ferrari-red);
+    top: 50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.milestone.right .milestone-dot {
+    left: -60px;
+}
+
+.milestone-dot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.milestone-dot:hover img {
+    opacity: 1;
+}
+
+.milestone-content {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.milestone-year {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.milestone-content h3 {
+    margin: 0 0 10px;
+    color: var(--text-light);
+}
+
+.milestone-content p {
+    color: var(--text-muted);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 30px;
+    }
+
+    .milestone {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 20px;
+    }
+
+    .milestone.right {
+        left: 0;
+    }
+
+    .milestone-dot {
+        left: -15px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .milestone.right .milestone-dot {
+        left: -15px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+}
+
+header.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(180deg, rgba(196, 0, 0, 0.12), transparent);
+}
+
+header.hero h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--ferrari-red);
+}
+
+header.hero p {
+    margin: .5rem 0 0;
+    opacity: .95
+}
+
+main.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1rem
+}
+
+/* Timeline layout */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--ferrari-red), var(--ferrari-red-strong));
+    box-shadow: 0 0 30px rgba(196, 0, 0, 0.15);
+}
+
+.entry {
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 1rem 2rem
+}
+
+.entry.left {
+    left: 0;
+    text-align: right
+}
+
+.entry.right {
+    left: 50%
+}
+
+.entry .card {
+    display: inline-block;
+    max-width: 520px;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--ferrari-red);
+    transition: transform .35s ease, box-shadow .35s ease;
+    backface-visibility: hidden
+}
+
+.entry .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(157, 0, 0, 0.12)
+}
+
+.dot-wrap {
+    position: absolute;
+    left: 50%;
+    top: 1.25rem;
+    transform: translateX(-50%);
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--ferrari-red);
+    box-shadow: 0 8px 30px rgba(196, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.dot-wrap img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    display: block
+}
+
+.year {
+    color: black;
+    font-weight: 700;
+    margin-bottom: 6px
+}
+
+h3 {
+    margin: .1rem 0 .5rem 0
+}
+
+p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9)
+}
+
+/* reveal animation */
+.entry {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: all .6s cubic-bezier(.2, .9, .2, 1)
+}
+
+.entry.visible {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.entry.left.visible {
+    transform: translateY(0) translateX(-12px)
+}
+
+.entry.right.visible {
+    transform: translateY(0) translateX(12px)
+}
+
+@media(min-width:880px) {
+    .entry.left {
+        float: left;
+        clear: both
+    }
+
+    .entry.right {
+        float: right;
+        clear: both
+    }
+
+    .entry .card {
+        width: 100%
+    }
+}
+
+@media(max-width:879px) {
+    .timeline::before {
+        left: 28px
+    }
+
+    .entry {
+        width: 100%;
+        padding-left: 4rem;
+        padding-right: 1rem;
+        margin-bottom: 1.4rem
+    }
+
+    .entry.left,
+    .entry.right {
+        left: 0;
+        text-align: left
+    }
+
+    .dot-wrap {
+        left: 28px;
+        transform: none
+    }
+
+    .entry .card {
+        margin-left: 0
+    }
+}
+
+/* small helpers */
+.small {
+    font-size: .92rem;
+    color: rgba(255, 255, 255, 0.9)
+}
